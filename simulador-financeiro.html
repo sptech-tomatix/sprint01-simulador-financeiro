@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tomatix</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="title">
+        <span>Simulador financeiro - Tomatix</span>
+    </div>
+    <div class="pai border">
+        <div class="filho">
+            <label for="ipt_area">Informe a área da sua estufa em m2:</label>
+            <input type="text" id="ipt_area">
+        </div>
+        <div class="filho">
+            Quantos kilos de tomate você produziu no último ciclo?
+            <input type="text" id="ipt_kg">
+        </div>
+        <div class="filho">
+            Qual o preço médio de venda por kg?
+            <input type="text" id="ipt_preco">
+        </div>
+        <div class="calcular">
+            <button onclick="calcular()">Calcular</button>
+        </div>
+        <div class="exibir" id="div_exibir">
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    let producaoReferencia = 16.6;
+
+    function calcular() {
+        div_exibir.innerHTML = '';
+        let producaoAtual = 0;
+        let producaoPotencial = 0;
+        let potencialKg = 0;
+        let potencialPerc = 0;
+        let faturamentoPotencial = 0;
+        let area = Number(ipt_area.value);
+        let kg = Number(ipt_kg.value);
+        let preco = Number(ipt_preco.value);
+
+        producaoAtual = (kg / area).toFixed(2);
+        producaoPotencial = area * producaoReferencia;
+        potencialKg = producaoPotencial - kg;
+        potencialPerc = ((potencialKg / kg) * 100).toFixed(2);
+        faturamentoPotencial = (potencialKg * preco).toFixed(2);
+
+        if (producaoAtual < producaoReferencia) {
+            div_exibir.innerHTML = `Produção atual: ${producaoAtual} kg/m² <br>
+                                Produção potencial: ${producaoReferencia} kg/m² <br><br>
+                                Potencial de aumento: <br>
+                                +${potencialPerc}% <br>
+                                +${potencialKg.toFixed(2)} kg <br> <br>
+                                Faturamento adicional estimado: <br>
+                                +R$ ${faturamentoPotencial}`;
+        } else {
+            div_exibir.innerHTML = `Parabéns a sua produção está ótima! <br>
+            Adquira nossa solução para garantir que continue assim!`;
+        }
+    }
+
+
+</script>
