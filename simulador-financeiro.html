@@ -4,31 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <title>Tomatix</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="title">
-        <span>Simulador financeiro - Tomatix</span>
-    </div>
-    <div class="pai border">
-        <div class="filho">
-            <label for="ipt_area">Informe a área da sua estufa em m2:</label>
-            <input type="text" id="ipt_area">
+    <div class="pai">
+        <div class="formulario">
+            <div class="input-and-label">
+                <label for="ipt_area">Area de plantação da estufa em m2:</label>
+                <input type="text" id="ipt_area" placeholder="Insira o tamanho em m²">
+            </div>
+            <div class="input-and-label">
+                Quantos kilos de tomate você produziu no último ciclo?
+                <input type="text" id="ipt_kg" placeholder="Insira o total em quilos">
+            </div>
+            <div class="input-and-label">
+                Qual o preço médio de venda por kg?
+                <input type="text" id="ipt_preco" placeholder="Insira o KG por m²">
+            </div>
+            <div class="calcular">
+                <button onclick="calcular()">Calcular</button>
+            </div>
         </div>
-        <div class="filho">
-            Quantos kilos de tomate você produziu no último ciclo?
-            <input type="text" id="ipt_kg">
-        </div>
-        <div class="filho">
-            Qual o preço médio de venda por kg?
-            <input type="text" id="ipt_preco">
-        </div>
-        <div class="calcular">
-            <button onclick="calcular()">Calcular</button>
-        </div>
-        <div class="exibir" id="div_exibir">
+        <div class="exibir" id="div_exibir">Resultado do calculo aqui</div>
         </div>
     </div>
 </body>
@@ -40,24 +42,20 @@
 
     function calcular() {
         div_exibir.innerHTML = '';
-        let producaoAtual = 0;
-        let producaoPotencial = 0;
-        let potencialKg = 0;
-        let potencialPerc = 0;
-        let faturamentoPotencial = 0;
+
         let area = Number(ipt_area.value);
         let kg = Number(ipt_kg.value);
         let preco = Number(ipt_preco.value);
 
-        producaoAtual = (kg / area).toFixed(2);
-        producaoPotencial = area * producaoReferencia;
-        potencialKg = producaoPotencial - kg;
-        potencialPerc = ((potencialKg / kg) * 100).toFixed(2);
-        faturamentoPotencial = (potencialKg * preco).toFixed(2);
+        let producaoAtual = (kg / area).toFixed(2);
+        let producaoPotencial = area * producaoReferencia;
+        let potencialKg = producaoPotencial - kg;
+        let potencialPerc = ((potencialKg / kg) * 100).toFixed(2);
+        let faturamentoPotencial = (potencialKg * preco).toFixed(2);
 
         if (producaoAtual < producaoReferencia) {
-            div_exibir.innerHTML = `Produção atual: ${producaoAtual} kg/m² <br>
-                                Produção potencial: ${producaoReferencia} kg/m² <br><br>
+            div_exibir.innerHTML = `Produção atual: <b>${producaoAtual} kg/m²</b><br>
+                                Produção potencial: <b>${producaoReferencia} kg/m²</b><br><br>
                                 Potencial de aumento: <br>
                                 +${potencialPerc}% <br>
                                 +${potencialKg.toFixed(2)} kg <br> <br>
