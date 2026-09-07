@@ -9,28 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <title>Tomatix</title>
     <link rel="stylesheet" href="style.css">
-</head>
+</head> 
 
 <body>
     <div class="pai">
         <div class="formulario">
+            <div class="title-calculadora">
+                <img src="/assets/calculator (6).svg" alt="">
+                <span class="title-name">Calculadora</span>
+            </div>
             <div class="input-and-label">
                 <label for="ipt_area">Area de plantação da estufa em m2:</label>
                 <input type="text" id="ipt_area" placeholder="Insira o tamanho em m²">
             </div>
             <div class="input-and-label">
-                Quantos kilos de tomate você produziu no último ciclo?
+                <label for="ipt_kg">Quantos kilos de tomate você produziu no último ciclo?</label> 
                 <input type="text" id="ipt_kg" placeholder="Insira o total em quilos">
             </div>
             <div class="input-and-label">
-                Qual o preço médio de venda por kg?
+                <label for="ipt_preco">Qual o preço médio de venda por kg?</label> 
                 <input type="text" id="ipt_preco" placeholder="Insira o KG por m²">
             </div>
             <div class="calcular">
                 <button onclick="calcular()">Calcular</button>
             </div>
         </div>
-        <div class="exibir" id="div_exibir">Resultado do calculo aqui</div>
+        <div class="exibir">
+            <span class="empty-state-title">Resultado:</span>
+            <div class="resultado-calc-card" id="div_exibir">
+                <span class="empty-state-result">Resultado da calculadora aqui</span>
+                <span class="empty-state-result2">Preencha os dados para visualizar o impacto estimado na sua produção</span>
+            </div>
+        </div>
         </div>
     </div>
 </body>
@@ -54,13 +64,13 @@
         let faturamentoPotencial = (potencialKg * preco).toFixed(2);
 
         if (producaoAtual < producaoReferencia) {
-            div_exibir.innerHTML = `Produção atual: <b>${producaoAtual} kg/m²</b><br>
-                                Produção potencial: <b>${producaoReferencia} kg/m²</b><br><br>
+            div_exibir.innerHTML = `Produção atual: <span class="prod-atual">${producaoAtual} kg/m²</span><br>
+                                Produção potencial: <span class="prod-atual">${producaoReferencia} kg/m²</span></b><br>
                                 Potencial de aumento: <br>
-                                +${potencialPerc}% <br>
-                                +${potencialKg.toFixed(2)} kg <br> <br>
+                                <span class="prod-atual">+${potencialPerc}%<br>
+                                +${potencialKg.toFixed(2)} kg </span><br>
                                 Faturamento adicional estimado: <br>
-                                +R$ ${faturamentoPotencial}`;
+                                <span class="faturamento-estimado">+R$ ${faturamentoPotencial}</span>`;
         } else {
             div_exibir.innerHTML = `Parabéns a sua produção está ótima! <br>
             Adquira nossa solução para garantir que continue assim!`;

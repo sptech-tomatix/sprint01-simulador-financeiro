@@ -50,6 +50,10 @@ body {
     margin-right: 50px;
 }
 
+label {
+    font-weight: 500;
+}
+
 .exibir {
     background-color: #005223;
     height: 100%;
@@ -57,6 +61,8 @@ body {
     width: 400px;
     border-radius: 0px 10px 10px 0px;
     color: white;
+    display: flex;
+    flex-direction: column;
 }
 
 input {
@@ -75,4 +81,86 @@ button {
     border-radius: 5px;
     font-weight: bold;
     width: 150px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #009d44;
+    transition: all 0.3s;
+}
+
+.empty-state-title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 38px;
+}
+
+.resultado-calc-card {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #3B7A56;
+    border-radius: 10px;
+    height: 100%;
+    padding: 30px;
+}
+
+.empty-state-result {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 16px;
+    display: flex;
+    align-self: center;
+}
+
+.empty-state-result2 {
+    font-weight: bold;
+    color: #AFC8BA;
+    text-align: center;
+}
+
+.pai .formulario .title-calculadora img {
+    height: 35px;
+    width: 35px;
+    background-color: #005223;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.calculator-icon {
+    display: flex;
+    background-color: #005223;
+    padding: 20px;
+    color: white;
+}
+
+.title-calculadora {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.title-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #005223;
+}
+
+.prod-atual {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.243);
+}
+
+.faturamento-estimado {
+    margin-top: 8px;
+    font-weight: bold;
+    font-size: 32px;
+    color: #00ff2a;
+    padding: 0px 0px 10px 0px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.243);
 }
