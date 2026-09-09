@@ -62,10 +62,10 @@
         let potencialPerc = ((potencialKg / kg) * 100).toFixed(2);
         let faturamentoPotencial = (potencialKg * preco).toFixed(2);
 
-        if (isNaN(preco)) {
-            alert("Insira apenas números");
-        } else if (preco == "") {
-            alert("Insira alguma coisa");
+        if (preco < 0 || kg < 0 || area < 0) {
+            alert("Insira um valor maior que zero.");
+        } else if (preco == "" || kg == "" || area == "") {
+            alert("Por favor, preencha todos os campos antes de continuar.");
         } else if (producaoAtual < producaoReferencia) {
             div_exibir.innerHTML = `Produção atual: <span class="prod-atual">${producaoAtual} kg/m²</span><br>
                                 Produção potencial: <span class="prod-atual">${producaoReferencia} kg/m²</span></b><br>
