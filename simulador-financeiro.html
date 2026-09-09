@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
     <title>Tomatix</title>
     <link rel="stylesheet" href="style.css">
-</head> 
+</head>
 
 <body>
     <div class="pai">
@@ -22,11 +22,11 @@
                 <input type="text" id="ipt_area" placeholder="Insira o tamanho em m²">
             </div>
             <div class="input-and-label">
-                <label for="ipt_kg">Quantos kilos de tomate você produziu no último ciclo?</label> 
+                <label for="ipt_kg">Quantos kilos de tomate você produziu no último ciclo?</label>
                 <input type="text" id="ipt_kg" placeholder="Insira o total em quilos">
             </div>
             <div class="input-and-label">
-                <label for="ipt_preco">Qual o preço médio de venda por kg?</label> 
+                <label for="ipt_preco">Qual o preço médio de venda por kg?</label>
                 <input type="text" id="ipt_preco" placeholder="Insira o valor do Kg">
             </div>
             <div class="calcular">
@@ -37,10 +37,11 @@
             <span class="empty-state-title">Resultado:</span>
             <div class="resultado-calc-card" id="div_exibir">
                 <span class="empty-state-result">Resultado da calculadora aqui</span>
-                <span class="empty-state-result2">Preencha os dados para visualizar o impacto estimado na sua produção</span>
+                <span class="empty-state-result2">Preencha os dados para visualizar o impacto estimado na sua
+                    produção</span>
             </div>
         </div>
-        </div>
+    </div>
     </div>
 </body>
 
@@ -50,7 +51,6 @@
     let producaoReferencia = 10.0;
 
     function calcular() {
-        div_exibir.innerHTML = '';
 
         let area = Number(ipt_area.value);
         let kg = Number(ipt_kg.value);
@@ -62,7 +62,11 @@
         let potencialPerc = ((potencialKg / kg) * 100).toFixed(2);
         let faturamentoPotencial = (potencialKg * preco).toFixed(2);
 
-        if (producaoAtual < producaoReferencia) {
+        if (isNaN(preco)) {
+            alert("Insira apenas números");
+        } else if (preco == "") {
+            alert("Insira alguma coisa");
+        } else if (producaoAtual < producaoReferencia) {
             div_exibir.innerHTML = `Produção atual: <span class="prod-atual">${producaoAtual} kg/m²</span><br>
                                 Produção potencial: <span class="prod-atual">${producaoReferencia} kg/m²</span></b><br>
                                 Potencial de aumento: <br>
@@ -74,6 +78,8 @@
             div_exibir.innerHTML = `Parabéns a sua produção está ótima! <br>
             Adquira nossa solução para garantir que continue assim!`;
         }
+        
+        
     }
 
 
